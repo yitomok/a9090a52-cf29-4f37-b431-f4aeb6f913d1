@@ -24,11 +24,10 @@
 * **Data Params**
 
    * **Mandatory:**
-     * `username=[string]`, for login
+     * `email=[string]`, for login
      * `password=[string]`, for login
 
    * **Optional:**
-     * `email=[string]`, user email
      * `name=[string]`, user full name
 
 * **Success Response:**
@@ -40,7 +39,7 @@
 
   * **Code:** 400 BAD REQUEST <br />
     **Content:** `{ "message" : "duplicate" }` <br />
-    **Reason:** Duplicate username found.
+    **Reason:** Duplicate email found.
 
   * **Code:** 400 BAD REQUEST <br />
     **Content:** `{ "message" : "invalid" }` <br />
@@ -70,7 +69,7 @@
 * **Data Params**
 
    * **Mandatory:**
-     * `username=[string]`, for validate login
+     * `email=[string]`, for validate login
      * `password=[string]`, for validate login
 
 * **Success Response:**
@@ -86,7 +85,7 @@
 
   * **Code:** 401 UNAUTHORIZED <br />
     **Content:** `{ "message": "invalid credential" }` <br />
-    **Reason:** Incorrect username and/or password.
+    **Reason:** Incorrect email and/or password.
 
 
 **Add Contact**
@@ -131,7 +130,7 @@
 
   * **Code:** 401 UNAUTHORIZED <br />
     **Content:** `{ "message": "invalid credential" }` <br />
-    **Reason:** Incorrect username and/or password.
+    **Reason:** Incorrect email and/or password.
 
   * **Code:** 500 INTERNAL SERVER ERROR <br />
     **Content:** `{ "message" : "error" }` <br />

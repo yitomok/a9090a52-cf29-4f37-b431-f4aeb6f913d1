@@ -15,7 +15,7 @@ describe('Users', () => {
 
     before((done) => {
         mongoose.connect(process.env.DB_URI)
-        .then((db) => User.remove({ username: 'yitomok' }).exec())
+        .then((db) => User.remove({ email: 'yitomok@users.noreply.github.com' }).exec())
         .then(() => done())
     })
 
@@ -28,7 +28,7 @@ describe('Users', () => {
             chai.request(server)
             .post('/user')
             .send({
-                username: 'yitomok',
+                email: 'yitomok@users.noreply.github.com',
                 password: 'abc123'
             })
             .end((err, res) => {
@@ -42,7 +42,7 @@ describe('Users', () => {
             chai.request(server)
             .post('/user')
             .send({
-                username: 'yitomok',
+                email: 'yitomok@users.noreply.github.com',
                 password: 'abc123'
             })
             .end((err, res) => {
@@ -58,7 +58,7 @@ describe('Users', () => {
             chai.request(server)
             .post('/user/login')
             .send({
-                username: 'yitomok',
+                email: 'yitomok@users.noreply.github.com',
                 password: 'abc123'
             })
             .end((err, res) => {
@@ -73,7 +73,7 @@ describe('Users', () => {
             chai.request(server)
             .post('/user/login')
             .send({
-                username: 'yitomok',
+                email: 'yitomok@users.noreply.github.com',
                 password: 'abc456'
             })
             .end((err, res) => {

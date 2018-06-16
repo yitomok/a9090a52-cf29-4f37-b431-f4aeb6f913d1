@@ -8,9 +8,9 @@ module.exports = (req, res, next) => {
 
     if (auth) {
         let claimedUser = jwt.decode(token)
-        if (claimedUser && claimedUser.username) {
+        if (claimedUser && claimedUser.email) {
             return User.findOne({
-                username: claimedUser.username
+                email: claimedUser.email
             }, 'password').exec()
             .then((user) => {
                 jwt.verify(token, user.password, (error, decoded) => {
@@ -18,7 +18,7 @@ module.exports = (req, res, next) => {
                         res.set('WWW-Authenticate', 'Bearer realm="backend-strv", error="invalid_token"')
                         .status(401).json({ 'message': 'invalid_token' })
                     } else {
-                        res.locals.username = decoded.username
+                        res.locals.email = decoded.email
                         next()
                     }
                 })

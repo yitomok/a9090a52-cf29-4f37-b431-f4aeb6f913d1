@@ -4,12 +4,11 @@ const jwt = require('jsonwebtoken')
 const router = module.exports = require('express').Router()
 
 router.post('/', (req, res) => {
-    if (req.body.username && req.body.password) {
+    if (req.body.email && req.body.password) {
         return User.create({
-            username: req.body.username,
+            email: req.body.email,
             password: User.hash(req.body.password),
-            name: req.body.name || '',
-            email: req.body.email || ''
+            name: req.body.name || ''
         })
         .then((user) => {
             if (user) {
@@ -27,9 +26,9 @@ router.post('/', (req, res) => {
 })
 
 router.post('/login', (req, res) => {
-    if (req.body.username && req.body.password) {
+    if (req.body.email && req.body.password) {
         return User.findOne({
-            username: req.body.username
+            email: req.body.email
         }).exec()
         .then((user) => {
             if (user && user.authenticate(req.body.password)) {
